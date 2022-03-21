@@ -15,9 +15,9 @@ def get_seed():
 
 def encrypt(FILE, SEED):
     encryptedMsg = str()
-    n = (len(FILE) // len(SEED)) + 1        #Wen u zip it, SEED wil alwez B bigger. Bcuz if SEED is smaller, massage will bottleneck
+    n = (len(FILE) // len(SEED))        #Wen u zip it, SEED wil alwez B bigger. Bcuz if SEED is smaller, massage will bottleneck
     seedCopy = SEED.copy()                  #Copy kortasi karon list ta extend korle Double add hoye jabe tokhon
-    for i in range(0, n+1):
+    for i in range(0, n):
         SEED.extend(seedCopy)               #Extending the seed to reach the value of the msg. Otherwise, only a partial of the msg will get encrypted
     for char, num in zip(FILE, SEED):
         encryptedMsg += GetRandChar(char, num) #STRING CONCATANATION!!! Eita ke emneo porte paros [encryptedMsg = encryptedMsg + GetRandChar(char, num)]
@@ -52,4 +52,4 @@ seedFile.close()
 encFile = open("secret.txt", 'r')
 seedFile = open("seed.txt", 'r')
 
-print(encFile.read(), seedFile.read())
+print(encFile.read(), seedFile.read()/2)

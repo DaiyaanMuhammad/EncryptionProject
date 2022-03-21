@@ -52,4 +52,4 @@ seedFile.close()
 encFile = open("secret.txt", 'r')
 seedFile = open("seed.txt", 'r')
 
-print(encFile.read(), seedFile.read()/2)
+print(encFile.read(), seedFile.read())
